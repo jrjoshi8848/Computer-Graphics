@@ -12,6 +12,8 @@ struct Point
     double x;
     double y;
 };
+
+
 void drawObject(struct Point point[],int s)
 {
     for(int i=0;i<s-1;i++)
@@ -20,6 +22,8 @@ void drawObject(struct Point point[],int s)
     }
     line(point[s-1].x,point[s-1].y,point[0].x,point[0].y);
 }
+
+
 void print(struct Point point[],int s)
 {
     for(int i=0;i<s;i++)
@@ -27,6 +31,8 @@ void print(struct Point point[],int s)
         cout<<"\npoint"<<i<<"\t\tx="<<point[i].x<<"\t\ty="<<point[i].y;
     }
 }
+
+
 void scalePoint(struct Point p[],int s, double scaleX, double scaleY) 
 {
     struct Point point[100];
@@ -50,6 +56,8 @@ void scalePoint(struct Point p[],int s, double scaleX, double scaleY)
     getch();
     closegraph();
 }
+
+
 void rotatePoint(struct Point p[],int s, double angleDegrees) 
 {
     struct Point point[100];
@@ -80,6 +88,8 @@ void rotatePoint(struct Point p[],int s, double angleDegrees)
     getch();
     closegraph();
 }
+
+
 void translatePoint(struct Point p[],int s, double tx, double ty) 
 {
     struct Point point[100];
@@ -103,12 +113,15 @@ void translatePoint(struct Point p[],int s, double tx, double ty)
     getch();
     closegraph();
 }
+
+
+
 int main() 
 { 
     int gd=DETECT,gm,n,i,c;
     struct Point myp[100];
     double sx,sy,x,y,ang;
-
+    q:
     cout<<"Enter no of points :";
     cin>>n;
 
@@ -119,7 +132,7 @@ int main()
         myp[i]={x,y};
     }
     p:
-    cout<<"\n\nWhat would like to do:\n\n\t1.Translate\n\t2.Rotation\n\t3.Scaling\n\n\tEnter choice :";
+    cout<<"\n\nWhat would like to do:\n\n\t1.Translate\n\t2.Rotation\n\t3.Scaling\n\t4.Change Point\n\t5.Chnage cordinate of particular point\n\t6.EXIT\n\n\tEnter choice :";
     cin>>c;
     switch (c)
     {
@@ -150,8 +163,20 @@ int main()
             goto p;
     }
     case 4:
+    goto q;
+
+    case 5:
+    int k;
+    cout<<"\n\tEnter index of point to be changes :";
+    cin>>k;
+    cout<<"\n\tEnter cordinates of p"<<k<<" :";
+    cin>>myp[k].x>>myp[k].y;
+    goto p;
+
+    case 6:
     exit(0);
     default :
+    cout<<"\n\n\t\tInvalid choice..........\n\n\t\tBack to main Menu.................";
     goto p;
 
     }
